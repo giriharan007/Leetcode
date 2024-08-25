@@ -8,10 +8,15 @@ class Solution(object):
             return ""
         prefix = strs[0]
         for string in strs[1:]:
-            while string.find(prefix) != 0:
-                prefix = prefix[:-1]
-                if not prefix:
-                    return ""
+            i=0
+            while i<len(prefix) and i<len(string):
+                if (prefix[i]!=string[i]):
+                    prefix=prefix[0:i:]
+                    break
+                i=i+1
+            else:
+                prefix=prefix[:i]
+    
         return prefix        
 
             
