@@ -1,19 +1,16 @@
 class Solution(object):
     def isValid(self, s):
-        res=[]
-        if(s[0]==")" or s[0]=="}" or s[0]=="]"):
+        if(len(s)%2!=0):
             return False
-        for i in s:
-            if(i=="(" or i=="{" or i=="["):
-                res.append(i)
-            elif(len(res)!=0 and (res[-1]=="(" or res[-1]=="{" or res[-1]=="[")):
-                if((i==")" and res[-1]=="(") or (i=="}" and res[-1]=="{") or (i=="]" and res[-1]=="[")):
-                    res.pop()
-                else:
-                    return False
+        stack=[]    
+        for char in s:
+            if(char=='(' or char=='{' or char=='['):
+                stack.append(char)
             else:
-                return False
-        
-        if(len(res)==0):
-            return True
-        return False
+                if not stack:return False
+                top=stack.pop()
+                if(top=='(' and char!=')') or (top=='{' and char!='}') or (top=='[' and char!=']'):
+                    return False
+        return not stack            
+
+
