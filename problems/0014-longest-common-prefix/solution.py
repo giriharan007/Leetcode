@@ -9,9 +9,10 @@ class Solution(object):
         prefix = strs[0]
         for string in strs[1:]:
             i=0
+            print(len(string))
             while i<len(prefix) and i<len(string):
                 if (prefix[i]!=string[i]):
-                    prefix=prefix[0:i:]
+                    prefix=prefix[0:i]
                     break
                 i=i+1
             else:
