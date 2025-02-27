@@ -1,17 +1,21 @@
 class Solution {
     public int maxAbsoluteSum(int[] nums) {
-        int max=0;
+        int max_limit=0;
+         int min_limit=0;
+         int max=0;
          int min=0;
-         int curr=0;
-         int res=0;
   
         for(int val:nums){
-             curr+=val;
-             res=Math.max(res,Math.max(Math.abs(curr-min),Math.abs(curr-max)));
-             max=Math.max(max,curr);
-             min=Math.min(min,curr);
-            }
-        
-        return res;
+            max_limit+= val;
+            min_limit += val;
+
+            max = Math.max(max, max_limit);
+            min = Math.min(min, min_limit);
+
+            if(max_limit < 0) max_limit = 0;
+            if(min_limit > 0) min_limit = 0;
+        }
+
+        return Math.max(max, Math.abs(min));
     }
 }
