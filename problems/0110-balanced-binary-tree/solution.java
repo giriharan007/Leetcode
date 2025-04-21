@@ -18,16 +18,14 @@ class Solution {
         return subTree(root) != -1;
     }
 
-    int height(TreeNode root){
-      if(root==null) return -1;
-      return 1+Math.max((height(root.left)),height(root.right));
-    }
+    // int height(TreeNode root){
+    //   if(root==null) return -1;
+    //   return 1+Math.max((height(root.left)),height(root.right));
+    // }
     int subTree(TreeNode root){
     if (root == null) return 0;
-
         int leftHeight = subTree(root.left);
         if (leftHeight == -1) return -1; 
-
         int rightHeight = subTree(root.right);
         if (rightHeight == -1) return -1; 
 
